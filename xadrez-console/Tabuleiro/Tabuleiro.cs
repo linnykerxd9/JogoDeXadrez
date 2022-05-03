@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using tabuleiro.Exceptions;
 
 namespace tabuleiro
 {
@@ -24,10 +25,39 @@ namespace tabuleiro
             return Pecas[linha, coluna];
         }
 
+        public Peca peca(Posicao pos)
+        {
+            return Pecas[pos.Linha, pos.Coluna];
+        }
         public void ColocarPeca(Peca peca, Posicao posicao)
         {
+            if (ExistePeca(posicao))
+            {
+                throw new TabuleiroException("Já existe uma peça nessa posição");
+            }
             Pecas[posicao.Linha, posicao.Coluna] = peca;
             peca.Posicao = posicao;
+        }
+        private bool ExistePeca(Posicao pos)
+        {
+            ValidarPosicao(pos);
+            return peca(pos) != null;
+        }
+        private bool PosicaoValida(Posicao pos)
+        {
+            if(pos.Linha < 0 || pos.Linha >= Linhas || pos.Coluna < 0 || pos.Coluna >= Colunas)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        private void ValidarPosicao(Posicao pos)
+        {
+            if (!PosicaoValida(pos))
+            {
+                throw new TabuleiroException("Posição inválida!");
+            }
         }
     }
 }
