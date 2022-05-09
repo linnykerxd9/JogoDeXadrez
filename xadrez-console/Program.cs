@@ -1,6 +1,7 @@
 ﻿using System;
 using tabuleiro;
 using Xadrez;
+using xadrez_console.Xadrez;
 
 namespace xadrez_console
 {
@@ -10,6 +11,11 @@ namespace xadrez_console
         {
             try
             {
+                PosicaoXadrez posicaoXadrez = new PosicaoXadrez('A',1);
+                PosicaoXadrez posicaoXadrez2 = new PosicaoXadrez('B',1);
+
+                Console.WriteLine(posicaoXadrez.ToPosicao());
+                Console.WriteLine(posicaoXadrez2.ToPosicao());
                 Tabuleiro tab = new Tabuleiro(8, 8);
                 tab.ColocarPeca(new Rei(Cor.Preata, tab), new Posicao(0, 0));
                 tab.ColocarPeca(new Rainha(Cor.Branca, tab), new Posicao(5, 2));
