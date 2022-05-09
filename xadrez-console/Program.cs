@@ -11,8 +11,8 @@ namespace xadrez_console
         {
             try
             {
-                PosicaoXadrez posicaoXadrez = new PosicaoXadrez('A',1);
-                PosicaoXadrez posicaoXadrez2 = new PosicaoXadrez('B',1);
+                PosicaoXadrez posicaoXadrez = new PosicaoXadrez('a',1);
+                PosicaoXadrez posicaoXadrez2 = new PosicaoXadrez('b',1);
 
                 Console.WriteLine(posicaoXadrez.ToPosicao());
                 Console.WriteLine(posicaoXadrez2.ToPosicao());
