@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace tabuleiro
 {
-    class Peca
+    abstract class Peca
     {
         public Posicao Posicao { get; set; }
         public Cor Cor { get; set; }
@@ -20,6 +20,7 @@ namespace tabuleiro
             QntdMovimentos = 0;
         }
 
+        public abstract bool[,] MovimentosPossiveis();
         public void IncrementarQntdMovimento()
         {
             QntdMovimentos++;

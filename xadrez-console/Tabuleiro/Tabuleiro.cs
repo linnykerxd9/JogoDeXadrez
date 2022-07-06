@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 using tabuleiro.Exceptions;
 
 namespace tabuleiro
@@ -54,7 +50,7 @@ namespace tabuleiro
             ValidarPosicao(pos);
             return Peca(pos) != null;
         }
-        private bool PosicaoValida(Posicao pos)
+        public bool PosicaoValida(Posicao pos)
         {
             if(pos.Linha < 0 || pos.Linha >= Linhas || pos.Coluna < 0 || pos.Coluna >= Colunas)
             {
