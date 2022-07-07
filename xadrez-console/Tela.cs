@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using tabuleiro;
+using Xadrez;
 using xadrez_console.Xadrez;
 
 namespace xadrez_console
@@ -18,6 +20,53 @@ namespace xadrez_console
                 Console.WriteLine();
             }
             Console.WriteLine("  A B C D E F G H");
+        }
+
+        public static void ImprimirPartida(PartidaDeXadrez partida)
+        {
+            ImprimirTaboleiro(partida.Tab);
+            Console.WriteLine();
+            ImprimirPecasCapturadas(partida);
+            ImprimirPecasEmJogo(partida);
+            Console.WriteLine("Turno: " + partida.Turno);
+            Console.WriteLine("Aguardando Jogada da peça: " + partida.JogadorAtual);
+            Console.WriteLine();
+        }
+
+        private static void ImprimirPecasCapturadas(PartidaDeXadrez partida)
+        {
+            Console.WriteLine();
+            Console.WriteLine("Peças capturadas");
+            Console.Write("brancas: "+ partida.PecasCapturadas(Cor.Branca).Count + " ") ;
+            ImprimirConjunto(partida.PecasCapturadas(Cor.Branca));
+            Console.WriteLine();
+            Console.Write("pretas: "+ partida.PecasCapturadas(Cor.Preta).Count + " ");
+            ImprimirConjunto(partida.PecasCapturadas(Cor.Preta));
+
+            Console.WriteLine();
+        }
+
+        private static void ImprimirPecasEmJogo(PartidaDeXadrez partida)
+        {
+            Console.WriteLine();
+            Console.WriteLine("Peças em jogo");
+            Console.Write("brancas: " + partida.PecasEmJogo(Cor.Branca).Count + " ");
+            ImprimirConjunto(partida.PecasEmJogo(Cor.Branca));
+            Console.WriteLine();
+            Console.Write("pretas: " + partida.PecasEmJogo(Cor.Preta).Count + " ");
+            ImprimirConjunto(partida.PecasEmJogo(Cor.Preta));
+
+            Console.WriteLine();
+        }
+
+        private static void ImprimirConjunto(HashSet<Peca> pecas)
+        {
+            Console.Write("[");
+            foreach(Peca x in pecas)
+            {
+                Console.Write(x + " ");
+            }
+            Console.Write("]");
         }
 
         public static void ImprimirTaboleiro(Tabuleiro tab, bool[,] movimentosPossiveis)
@@ -43,6 +92,7 @@ namespace xadrez_console
                 Console.WriteLine();
             }
             Console.WriteLine("  A B C D E F G H");
+
         }
 
 
@@ -77,5 +127,7 @@ namespace xadrez_console
                 Console.Write(" ");
             }
         }
+
+       
     }
 }
